@@ -9,6 +9,9 @@ import org.junit.jupiter.api.TestMethodOrder
 import org.junit.jupiter.api.parallel.Execution
 import org.junit.jupiter.api.parallel.ExecutionMode.CONCURRENT
 import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.Arguments
+import org.junit.jupiter.params.provider.Arguments.arguments
+import org.junit.jupiter.params.provider.MethodSource
 import org.junit.jupiter.params.provider.ValueSource
 import java.util.*
 import java.util.Locale.ENGLISH
@@ -32,6 +35,12 @@ class AnagramCheckerShould {
     fun `checks two texts with different amount of a letter can't be an anagram`() {
         (Text("llll") isAnagramOf Text("llllll"))
             .shouldBeFalse()
+    }
+
+    @ParameterizedTest
+    @MethodSource("wikipediaExamples")
+    fun `wikipedia examples`(first: Text, second: Text) {
+        first.isAnagramOf(second).shouldBeTrue()
     }
 
     @Nested
@@ -66,6 +75,34 @@ class AnagramCheckerShould {
         fun `count letters case-insensitive`() {
             Text("aAAAa").toFrequencyMap() shouldContain (Letter('a') to Count(5))
         }
+    }
+
+    companion object {
+        @JvmStatic
+        fun wikipediaExamples(): List<Arguments> =
+            listOf(
+                arguments("New York Times", "monkeys write"),
+                arguments("Church of Scientology", "rich-chosen goofy cult"),
+                arguments("McDonald's restaurants", "Uncle Sam's standard rot"),
+                arguments("coronavirus", "carnivorous"),
+                arguments("She Sells Sanctuary", "Santa; shy, less cruel"),
+                arguments("She Sells Sanctuary", "Satan; cruel, less shy"),
+                arguments("evil", "vile"),
+                arguments("a gentleman", "elegant man"),
+                arguments("eleven plus two", "twelve plus one"),
+                arguments("restful", "fluster"),
+                arguments("cheater", "teacher"),
+                arguments("funeral", "real fun"),
+                arguments("adultery", "true lady"),
+                arguments("forty five", "over fifty"),
+                arguments("Santa", "Satan"),
+                arguments("William Shakespeare", "I am a weakish speller"),
+                arguments("Madam Curie", "Radium came"),
+                arguments("George Bush", "He bugs Gore"),
+                arguments("Tom Marvolo Riddle", "I am Lord Voldemort"),
+                arguments("silent", "listen"),
+                arguments("Anagrams", "Ars magna"),
+            )
     }
 }
 
