@@ -1,5 +1,6 @@
 import io.kotest.matchers.booleans.shouldBeTrue
 import io.kotest.matchers.maps.shouldContain
+import io.mockk.InternalPlatformDsl.toArray
 import org.junit.jupiter.api.MethodOrderer.Random
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
@@ -21,15 +22,15 @@ class AnagramCheckerShould {
     @Nested
     inner class FrequencyMapShould {
         @ParameterizedTest
-        @ValueSource(chars = ['a', 'b'])
+        @ValueSource(chars = ['a', 'b', 'z'])
         fun `count a single letter once`(letter: Letter) {
-            letter.toText().toFrequencyMap() shouldContain (Letter('a') to Count(1))
+            letter.toText().toFrequencyMap() shouldContain (letter to Count(1))
         }
     }
 }
 
 private fun Text.toFrequencyMap(): Map<Letter, Count> {
-    return mapOf(Letter('a') to Count(1))
+    return mapOf(Letter(text.first()) to Count(1))
 }
 
 @JvmInline
