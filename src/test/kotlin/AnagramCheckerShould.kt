@@ -21,7 +21,7 @@ class AnagramCheckerShould {
     @Nested
     inner class FrequencyMapShould {
         @ParameterizedTest
-        @ValueSource(chars = ['a'])
+        @ValueSource(chars = ['a', 'b'])
         fun `count a single letter once`(letter: Letter) {
             letter.toText().toFrequencyMap() shouldContain (Letter('a') to Count(1))
         }
