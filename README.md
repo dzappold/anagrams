@@ -56,23 +56,19 @@ They can sometimes change from a proper noun or personal name into an appropriat
 
 They can change part of speech, such as the adjective "silent" to the verb "listen".
 
-"Anagrams" itself can be anagrammatized as "Ars magna" (Latin, 'the great art').[4]
+"Anagrams" itself can be anagrammatized as "Ars magna" (Latin, 'the great art').
+
+## Thoughts and Decisions
+
+- Since we are talking about `texts` in the task description or about `word` or `phrase` in wikipedia - it might make
+  sense to introduce a tiny type that represents the domain
 
 ## Frameworks used
 
-- [Http4k Web Framework][http4k]
 - [result4k Library][result4k]
 - [JUnit Testing Framework][junit]
 - [Kotest Assertion Library][kotest]
 - [Mockk Mocking Library][mockk]
-
-[docs]: https://kotlinlang.org/docs/home.html
-
-[kotlin]: https://kotlinlang.org
-
-[slack]: https://surveys.jetbrains.com/s3/kotlin-slack-sign-up
-
-[http4k]: http://http4k.org
 
 [result4k]: https://github.com/fork-handles/forkhandles
 
