@@ -125,6 +125,5 @@ value class Count(val count: Int)
 @JvmInline
 value class Text(val text: String)
 
-private infix fun Text.isAnagramOf(other: Text): Boolean {
-    return toFrequencyMap() == other.toFrequencyMap()
-}
+private infix fun Text.isAnagramOf(other: Text): Boolean =
+    toFrequencyMap() == other.toFrequencyMap()
