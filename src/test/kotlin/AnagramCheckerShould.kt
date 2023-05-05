@@ -7,14 +7,17 @@ import org.junit.jupiter.api.parallel.ExecutionMode.CONCURRENT
 
 @TestMethodOrder(Random::class)
 @Execution(CONCURRENT)
-class AnagramShould {
+class AnagramCheckerShould {
     @Test
     fun `checks whether a text is an anagram of another one`() {
-        ("Madam Curie" isAnagramOf "Radium came")
+        (Text("Madam Curie") isAnagramOf Text("Radium came"))
             .shouldBeTrue()
     }
 }
 
-private infix fun String.isAnagramOf(other: String): Boolean {
+@JvmInline
+value class Text(val text: String)
+
+private infix fun Text.isAnagramOf(other: Text): Boolean {
     return true
 }

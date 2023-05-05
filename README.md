@@ -62,6 +62,18 @@ They can change part of speech, such as the adjective "silent" to the verb "list
 
 - Since we are talking about `texts` in the task description or about `word` or `phrase` in wikipedia - it might make
   sense to introduce a tiny type that represents the domain
+- Same applies later for `letters` for single characters
+- we started with a guiding test
+- I implement the anagram checker as a function, since there is no need so far for a more complex construct like a
+  class `AnagramChecker`
+- for the algorithm we have different approaches
+    - compare a unified sorted text for the anagram check
+        - simple algorithm, that basically filters input, maps and sorts it for later comparison
+        - will have issues for larger texts (like whole books)
+    - create for each text a frequency map and compare them
+        - represents normal approach a person would do as well
+        - feels more natural
+    - both approaches could be improved in terms of memory consumption and runtime using sequences and parallelism
 
 ## Frameworks used
 
