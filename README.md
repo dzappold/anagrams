@@ -1,4 +1,4 @@
-# Kotlin Project Template
+# anagrams
 
 This template follows hexagonal architecture structure. 
 
