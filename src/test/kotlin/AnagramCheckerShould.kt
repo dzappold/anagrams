@@ -28,6 +28,12 @@ class AnagramCheckerShould {
             .shouldBeFalse()
     }
 
+    @Test
+    fun `checks two texts with different amount of a letter can't be an anagram`() {
+        (Text("llll") isAnagramOf Text("llllll"))
+            .shouldBeFalse()
+    }
+
     @Nested
     inner class FrequencyMapShould {
         @ParameterizedTest
