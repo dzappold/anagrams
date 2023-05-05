@@ -14,7 +14,6 @@ import org.junit.jupiter.params.provider.Arguments.arguments
 import org.junit.jupiter.params.provider.MethodSource
 import org.junit.jupiter.params.provider.ValueSource
 import java.util.*
-import java.util.Locale.ENGLISH
 
 @TestMethodOrder(Random::class)
 @Execution(CONCURRENT)
@@ -106,24 +105,4 @@ class AnagramCheckerShould {
     }
 }
 
-private fun Text.toFrequencyMap(): Map<Letter, Count> =
-    text
-        .lowercase(ENGLISH)
-        .filter(Char::isLetter)
-        .groupingBy { Letter(it) }
-        .eachCount()
-        .mapValues { (_, count) -> Count(count) }
-
-@JvmInline
-value class Letter(val letter: Char)
-
 fun Letter.toText(): Text = Text("$letter")
-
-@JvmInline
-value class Count(val count: Int)
-
-@JvmInline
-value class Text(val text: String)
-
-private infix fun Text.isAnagramOf(other: Text): Boolean =
-    toFrequencyMap() == other.toFrequencyMap()
