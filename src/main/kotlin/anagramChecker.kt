@@ -1,4 +1,4 @@
-import java.util.Locale
+import java.util.Locale.ENGLISH
 
 @JvmInline
 value class Text(val text: String)
@@ -8,9 +8,9 @@ infix fun Text.isAnagramOf(other: Text): Boolean =
 
 internal fun Text.toFrequencyMap(): Map<Letter, Count> =
     text
-        .lowercase(Locale.ENGLISH)
+        .lowercase(ENGLISH)
         .filter(Char::isLetter)
-        .groupingBy { Letter(it) }
+        .groupingBy(::Letter)
         .eachCount()
         .mapValues { (_, count) -> Count(count) }
 
