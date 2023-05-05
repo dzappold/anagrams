@@ -27,7 +27,7 @@ class AnagramCheckerShould {
         }
 
         @ParameterizedTest
-        @ValueSource(strings = ["aa"])
+        @ValueSource(strings = ["aa", "aaa", "bbbb"])
         fun `count text containing only same letter`(text: Text) {
             text.toFrequencyMap() shouldContain (Letter(text.text.first()) to Count(text.text.length))
         }
