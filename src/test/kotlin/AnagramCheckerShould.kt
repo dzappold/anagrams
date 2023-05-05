@@ -1,5 +1,6 @@
 import io.kotest.matchers.booleans.shouldBeTrue
 import io.kotest.matchers.maps.shouldContain
+import io.kotest.matchers.maps.shouldContainExactly
 import org.junit.jupiter.api.MethodOrderer.Random
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
@@ -41,7 +42,11 @@ class AnagramCheckerShould {
 
         @Test
         fun `count text with different letters`() {
-            Text("aAbAa").toFrequencyMap() shouldContain (Letter('a') to Count(4))
+            Text("aAbAa").toFrequencyMap() shouldContainExactly
+                    mapOf(
+                        Letter('a') to Count(4),
+                        Letter('b') to Count(1)
+                    )
         }
 
         @Test
@@ -51,15 +56,13 @@ class AnagramCheckerShould {
     }
 }
 
-private fun Text.toFrequencyMap(): Map<Letter, Count> {
-    val cleanedText = text
+private fun Text.toFrequencyMap(): Map<Letter, Count> =
+    text
         .lowercase(ENGLISH)
         .filter(Char::isLetter)
         .groupingBy { Letter(it) }
         .eachCount()
         .mapValues { (_, count) -> Count(count) }
-    return cleanedText
-}
 
 @JvmInline
 value class Letter(val letter: Char)
