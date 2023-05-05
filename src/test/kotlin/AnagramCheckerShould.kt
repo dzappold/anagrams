@@ -1,6 +1,5 @@
 import io.kotest.matchers.booleans.shouldBeTrue
 import io.kotest.matchers.maps.shouldContain
-import io.mockk.InternalPlatformDsl.toArray
 import org.junit.jupiter.api.MethodOrderer.Random
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
@@ -26,11 +25,17 @@ class AnagramCheckerShould {
         fun `count a single letter once`(letter: Letter) {
             letter.toText().toFrequencyMap() shouldContain (letter to Count(1))
         }
+
+        @ParameterizedTest
+        @ValueSource(strings = ["aa"])
+        fun `count text containing only same letter`(text: Text) {
+            text.toFrequencyMap() shouldContain (Letter(text.text.first()) to Count(text.text.length))
+        }
     }
 }
 
 private fun Text.toFrequencyMap(): Map<Letter, Count> {
-    return mapOf(Letter(text.first()) to Count(1))
+    return mapOf(Letter(text.first()) to Count(text.length))
 }
 
 @JvmInline
