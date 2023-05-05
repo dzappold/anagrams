@@ -11,9 +11,8 @@ internal fun Text.toFrequencyMap(): Map<Letter, Count> =
 @JvmInline
 value class Letter(val letter: Char)
 
-
 @JvmInline
-value class Count(val count: Int)
+internal value class Count(val count: Int)
 
 @JvmInline
 value class Text(val text: String)
