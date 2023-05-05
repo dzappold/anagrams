@@ -1,3 +1,4 @@
+import io.kotest.matchers.booleans.shouldBeFalse
 import io.kotest.matchers.booleans.shouldBeTrue
 import io.kotest.matchers.maps.shouldContain
 import io.kotest.matchers.maps.shouldContainExactly
@@ -21,6 +22,12 @@ class AnagramCheckerShould {
             .shouldBeTrue()
     }
 
+    @Test
+    fun `checks two texts with different letters can't be an anagram`() {
+        (Text("abc") isAnagramOf Text("xyz"))
+            .shouldBeFalse()
+    }
+
     @Nested
     inner class FrequencyMapShould {
         @ParameterizedTest
@@ -42,7 +49,7 @@ class AnagramCheckerShould {
 
         @Test
         fun `count text with different letters`() {
-            Text("aAbAa").toFrequencyMap() shouldContainExactly
+            Text("aabaa").toFrequencyMap() shouldContainExactly
                     mapOf(
                         Letter('a') to Count(4),
                         Letter('b') to Count(1)
@@ -76,5 +83,5 @@ value class Count(val count: Int)
 value class Text(val text: String)
 
 private infix fun Text.isAnagramOf(other: Text): Boolean {
-    return true
+    return toFrequencyMap() == other.toFrequencyMap()
 }
