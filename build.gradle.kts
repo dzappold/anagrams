@@ -1,9 +1,8 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 
-// TODO: test and coverage aggregation
 plugins {
     id("com.github.ben-manes.versions")
-    id("org.owasp.dependencycheck")
+    id("kotlin-domain-conventions")
 }
 
 tasks {
@@ -21,4 +20,8 @@ tasks {
         outputDir = "build/dependencyUpdates"
         reportfileName = "report"
     }
+}
+
+dependencies {
+    api("dev.forkhandles:result4k")
 }

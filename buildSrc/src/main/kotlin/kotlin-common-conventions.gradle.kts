@@ -58,11 +58,11 @@ tasks {
         testLogging {
             events(PASSED, SKIPPED, FAILED)
         }
-        finalizedBy(jacocoTestReport) // report is always generated after tests run
+        finalizedBy(jacocoTestReport)
     }
 
     jacocoTestReport {
-        dependsOn(test) // tests are required to run before generating the report
+        dependsOn(test)
     }
 
     jacocoTestCoverageVerification {
@@ -78,20 +78,6 @@ tasks {
             }
         }
     }
-
-
-//    withType<KotlinCompile> {
-//        compilerOptions {
-//            freeCompilerArgs.set(
-//                listOf(
-//                    "-Xcontext-receivers",
-//                    "-Xjsr305=strict"
-//                )
-//            )
-//            jvmTarget.set(JVM_17)
-//            languageVersion.set(KOTLIN_2_0)
-//        }
-//    }
 }
 
 
@@ -101,7 +87,6 @@ detekt {
 
 tasks {
     withType<Detekt> {
-        // Target version of the generated JVM bytecode. It is used for type resolution.
         jvmTarget = java.toolchain.languageVersion.get().toString()
     }
 }

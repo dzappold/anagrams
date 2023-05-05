@@ -1,58 +1,62 @@
-# anagrams
+# Anagrams
 
-This template follows hexagonal architecture structure. 
+## Task
 
-## Workflow
-**Kotlin Project Template** is a particular type of GitHub repository that lets you speed up the setup phase and start writing your solutions immediately.
+Write a Java program that checks if two texts are anagrams of each other.
+Please use the english wikipedia entry for the definition of anagram.
+The solution has to be in Java or Kotlin.
+Feel free to use your favorite IDE, unit test frameworks, automated build system etc.
+You can prioritize however you like (performance, readability, extensibility, …).
+Googling is a good thing :)
 
-The general idea is straightforward – to create a new project based on this template, you need to log in to your GitHub account and use the **Use this template** green button.
-And remember – **do not fork it!**
+### wikipedia description
 
-After creating a new project based on this template in your account, a dedicated GitHub Actions workflow will start and clean up the code from redundant files.
-It will also personalize code to use your username and project name in namespaces and Gradle properties.
-How cool is that?
+[Definition of an anagram][Anagram@Wikipedia]
 
-Right after the [@actions-user][actions-user] actor pushes the second commit to your repository, you're ready to clone it within the IntelliJ IDEA.
+> An anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all
+> the original letters exactly once.[1] For example, the word anagram itself can be rearranged into nag a ram, as well
+> as
+> the word binary into brainy and the word adobe into abode.
+>
+> The original word or phrase is known as the subject of the anagram. Any word or phrase that exactly reproduces the
+> letters in another order is an anagram. Someone who creates anagrams may be called an "anagrammatist",[2] and the goal
+> of a serious or skilled anagrammatist is to produce anagrams that reflect or comment on their subject.
 
-From now, everything's in your hands!
+#### Examples
 
-## Content
+Anagrams may be created as a commentary on the subject. They may be a parody, a criticism or satire. For example:
 
-After you create a new project based on the current template repository using the **Use this template** button, a bare minimal scaffold will appear in your GitHub account with the following structure:
+    "New York Times" = "monkeys write"
+    "Church of Scientology" = "rich-chosen goofy cult"
+    "McDonald's restaurants" = "Uncle Sam's standard rot"
+    "coronavirus" = "carnivorous"
+    "She Sells Sanctuary" = "Santa; shy, less cruel" or "Satan; cruel, less shy"
 
-```
-.
-├── README.md
-├── build.gradle.kts
-├── buildSrc
-│   ├── build.gradle.kts
-│   ├── gradle.properties -> ../gradle.properties
-│   └── src
-│       └── main
-│           └── kotlin
-│               ├── kotlin-adapter-conventions.gradle.kts
-│               ├── kotlin-common-conventions.gradle.kts
-│               └── kotlin-domain-conventions.gradle.kts
-├── config
-│   └── detekt
-├── documentation
-│   ├── ADR
-│   │   └── ADRxxxx-Template.md
-│   ├── architecture.png
-│   ├── http-client.env.json
-│   └── request.http
-├── domain
-├── gradle
-│   └── wrapper
-├── gradle.properties
-├── gradlew
-├── gradlew.bat
-├── infrastructure
-│   └── example-adapter
-├── presentation
-│   └── web
-└── settings.gradle.kts
-```
+An anagram may also be a synonym of the original word. For example:
+
+    "evil" = "vile"
+    "a gentleman" = "elegant man"
+    "eleven plus two" = "twelve plus one"
+
+An anagram that has a meaning opposed to that of the original word or phrase is called an "antigram".[3] For example:
+
+    "restful" = "fluster"
+    "cheater" = "teacher"
+    "funeral" = "real fun"
+    "adultery" = "true lady"
+    "forty five" = "over fifty"
+    "Santa" = "Satan"
+
+They can sometimes change from a proper noun or personal name into an appropriate sentence:
+
+    "William Shakespeare" = "I am a weakish speller"
+    "Madam Curie" = "Radium came"
+    "George Bush" = "He bugs Gore"
+    "Tom Marvolo Riddle" = "I am Lord Voldemort"
+
+They can change part of speech, such as the adjective "silent" to the verb "listen".
+
+"Anagrams" itself can be anagrammatized as "Ars magna" (Latin, 'the great art').[4]
 
 ## Frameworks used
 
@@ -62,19 +66,20 @@ After you create a new project based on the current template repository using th
 - [Kotest Assertion Library][kotest]
 - [Mockk Mocking Library][mockk]
 
-## Getting help
-
-If you stuck with Kotlin-specific questions or anything related to this template, check out the following resources:
-
-- [Kotlin docs][docs]
-- [Kotlin Slack][slack]
-
-[actions-user]: https://github.com/actions-user
 [docs]: https://kotlinlang.org/docs/home.html
+
 [kotlin]: https://kotlinlang.org
+
 [slack]: https://surveys.jetbrains.com/s3/kotlin-slack-sign-up
+
 [http4k]: http://http4k.org
+
 [result4k]: https://github.com/fork-handles/forkhandles
+
 [junit]: https://junit.org/junit5/
+
 [kotest]: https://kotest.io
+
 [mockk]: https://mockk.io
+
+[Anagram@Wikipedia]: https://en.wikipedia.org/wiki/Anagram
