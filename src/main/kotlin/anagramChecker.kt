@@ -9,7 +9,7 @@ internal fun Text.toFrequencyMap(): Map<Letter, Count> =
         .mapValues { (_, count) -> Count(count) }
 
 @JvmInline
-value class Letter(val letter: Char)
+internal value class Letter(val letter: Char)
 
 @JvmInline
 internal value class Count(val count: Int)

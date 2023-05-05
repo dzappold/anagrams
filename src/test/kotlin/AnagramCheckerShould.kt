@@ -105,4 +105,4 @@ class AnagramCheckerShould {
     }
 }
 
-fun Letter.toText(): Text = Text("$letter")
+private fun Letter.toText(): Text = Text("$letter")
