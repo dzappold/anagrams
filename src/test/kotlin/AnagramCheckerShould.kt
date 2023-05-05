@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestMethodOrder
 import org.junit.jupiter.api.parallel.Execution
 import org.junit.jupiter.api.parallel.ExecutionMode.CONCURRENT
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.ValueSource
 
 @TestMethodOrder(Random::class)
 @Execution(CONCURRENT)
@@ -18,9 +20,10 @@ class AnagramCheckerShould {
 
     @Nested
     inner class FrequencyMapShould {
-        @Test
-        fun `count a single letter once`() {
-            Text("a").toFrequencyMap() shouldContain (Letter('a') to Count(1))
+        @ParameterizedTest
+        @ValueSource(chars = ['a'])
+        fun `count a single letter once`(letter: Letter) {
+            letter.toText().toFrequencyMap() shouldContain (Letter('a') to Count(1))
         }
     }
 }
@@ -31,6 +34,8 @@ private fun Text.toFrequencyMap(): Map<Letter, Count> {
 
 @JvmInline
 value class Letter(val letter: Char)
+
+fun Letter.toText(): Text = Text("$letter")
 
 @JvmInline
 value class Count(val count: Int)
