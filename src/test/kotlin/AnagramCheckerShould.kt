@@ -31,6 +31,11 @@ class AnagramCheckerShould {
         fun `count text containing only same letter`(text: Text) {
             text.toFrequencyMap() shouldContain (Letter(text.text.first()) to Count(text.text.length))
         }
+
+        @Test
+        fun `count letters case-insensitive`() {
+            Text("aAAAa").toFrequencyMap() shouldContain (Letter('a') to Count(5))
+        }
     }
 }
 
