@@ -8,6 +8,8 @@ import org.junit.jupiter.api.parallel.Execution
 import org.junit.jupiter.api.parallel.ExecutionMode.CONCURRENT
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
+import java.util.*
+import java.util.Locale.ENGLISH
 
 @TestMethodOrder(Random::class)
 @Execution(CONCURRENT)
@@ -33,6 +35,16 @@ class AnagramCheckerShould {
         }
 
         @Test
+        fun `ignore non-letters`() {
+            Text("a a !,a").toFrequencyMap() shouldContain (Letter('a') to Count(3))
+        }
+
+        @Test
+        fun `count text with different letters`() {
+            Text("aAbAa").toFrequencyMap() shouldContain (Letter('a') to Count(4))
+        }
+
+        @Test
         fun `count letters case-insensitive`() {
             Text("aAAAa").toFrequencyMap() shouldContain (Letter('a') to Count(5))
         }
@@ -40,7 +52,13 @@ class AnagramCheckerShould {
 }
 
 private fun Text.toFrequencyMap(): Map<Letter, Count> {
-    return mapOf(Letter(text.first()) to Count(text.length))
+    val cleanedText = text
+        .lowercase(ENGLISH)
+        .filter(Char::isLetter)
+        .groupingBy { Letter(it) }
+        .eachCount()
+        .mapValues { (_, count) -> Count(count) }
+    return cleanedText
 }
 
 @JvmInline
