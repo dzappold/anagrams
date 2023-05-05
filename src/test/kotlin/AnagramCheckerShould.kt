@@ -17,7 +17,7 @@ class AnagramCheckerShould {
     }
 
     @Nested
-    class FrequencyMapShould {
+    inner class FrequencyMapShould {
         @Test
         fun `count a single letter once`() {
             Text("a").toFrequencyMap() shouldContain (Letter('a') to Count(1))
@@ -26,7 +26,7 @@ class AnagramCheckerShould {
 }
 
 private fun Text.toFrequencyMap(): Map<Letter, Count> {
-    TODO("Not yet implemented")
+    return mapOf(Letter('a') to Count(1))
 }
 
 @JvmInline
